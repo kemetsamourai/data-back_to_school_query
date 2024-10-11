@@ -2,7 +2,15 @@
 
 def students_from_city(db, city):
     """return a list of students from a specific city"""
-    pass  # YOUR CODE HERE
+
+    query = """
+    SELECT *
+    FROM students
+    WHERE students.birth_city = ?
+  """
+    db.execute(query, (city, ))
+
+    return db.fetchall()
 
 
 # To test your code, you can **run it** before running `make`
